@@ -1,0 +1,9 @@
+/__pycache__
+/volatility3-develop/OtterCTF.vmem
+/volatility3-develop/memory.dmp
+/proc_dumps
+/dumps
+image.vmdk
+/upload
+upload/image.vmdk
+upload/ram.vmem

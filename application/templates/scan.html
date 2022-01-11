@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+{% for i in list_proc %}
+{% if i.global_graph[2] %}
+{{ i.global_graph[2]|indent(4)|safe }}
+{% endif %}
+{% if i.global_graph[3] %}
+{{ i.global_graph[3]|indent(4)|safe }}
+{% endif %}
+{% if i.global_graph[0] %}
+{{ i.global_graph[0]|indent(4)|safe }}
+{% endif %}
+{% endfor %}
+{% endblock %}
+
+
+
+{% block content %}
+{% if status %}
+<b>Файлы успешно загружены, можете начинать сканирование, процесс занимает достаточно много времени</b>
+<form action="" method="POST">
+    <div class="col-md-12">
+        <label for="text" id="text" class="form-label">Пожалуйста выставите интервал сканирования в секундах (По умолчанию 0, от старта процесса до времени создания дампа, если дамп сделан сразу после инцидента, в противном случае могут возникнуть ошибку) </label>
+        <input type = "number" class="form-control" name="intrv" value="0"/>
+      </div>
+    <input type="submit" value="Запуск сканирования" />
+</form>
+{% else %}
+{% set count = namespace(value=0) %}
+<div class="acor-container">        
+    {% for i in list_proc %}
+    {% set count.value = count.value + 1 %}
+    {% set list1 = i.name.split('|') %}
+    <input type="checkbox" name="chacor" id="chacor{{count.value}}" />
+    <label for="chacor{{count.value}}">{{i.name}}</label>
+    <div class="acor-body">
+    <input type="checkbox" name="{{i.name}}" value="{{count.value}}" checked>
+        {% if i.global_graph[1] %}
+        {{ i.global_graph[1]|indent(4)|safe }}
+        {% endif %}
+        
+        <table>
+            <h2>Совпадения по базе</h2>
+                <p> </p>
+                <thead>
+                    <tr>
+                    <th><b>ID в Базе:</b></th>
+                    <th><b>Имя процесса:</b></th>
+                    <th><b>Процент совпадения</b></th>
+                    <th><b>Совпадение по активности</b></th>
+                    <th><b>Совпадение по скрытности</b></th>
+                    <th><b>Совпадение по DLL</b></th>
+                    <th><b>Совпадения CMD</b></th>
+                    <th><b>Совпадения по соединениям</b></th>
+                    <th><b>Совпадения по иньекциям</b></th>
+                    <th><b>Совпадения по файлам</b></th>
+                    <th><b>Совпадения по доменам</b></th>
+                </tr>
+                </thead>
+                <tbody>
+            {% for dict in i.diff_dict %}
+             <tr>
+                    <td>{{dict['id']}}</th>
+                    <td>{{dict['name']}}</th>
+                    <td>{{dict['sum_val']}}  %</th>
+                    <td>{{dict['fa']}}</th>       
+                    <td>{{dict['hide']}}</td>
+                    <td>{{dict['dlls']}}</td>
+                    <td>{{dict['cmd']}}</td>
+                    <td>{{dict['conn']}}</td>
+                    <td>{{dict['mal']}}</td>
+                    <td>{{dict['files']}}</td>
+                    <td>{{dict['domains']}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+      <p class="command"><b>Имя процесса: </b>{{list1[0]}}</p>
+      <p class="command"><b>PID процесса: </b>{{i.pid}}</p>
+      <p class="command"><b>Время запуска: </b>{{i.str_time}}</p>
+      <p class="command"><b>Расположение процесса:</b>{{i.path}}</p>
+      <p class="command"><b>Взаимодействие с файлами:</b>{{i.check_func_file}}</p>
+      <p class="command"><b>Скрытый:{{i.hiden}}</b></p>
+      <p class="command"><b>Аргументы командной строки:</b></p>
+      <p class="command">{{i.cmd}}</p>
+      <p class="command"><b>Найденные DLL:</b></p>
+      {% for dll in i.dlls %}
+      <p class="command">{{dll}}</p>
+      {% endfor %}
+      <p class="command"><b>Найденные пути в дампе процесса:</b></p>
+      {% for path in i.path_artifacts %}
+      <p class="command">{{path}}</p>
+      {% endfor %}
+      <p class="command"><b>Найденные доменные имена в дампе процесса:</b></p>
+      {% for domain in i.domain_artifacts %}
+      <p class="command">{{ domain }}</p>
+      {% endfor %}
+      <p class="command"><b>Найденные IP в дампе процесса:</b></p>
+      {% for ip in i.hosts_artifacts %}
+      <p class="command">{{ ip }}</p>
+      {% endfor %}
+      <p class="command"><b>Список возможных сетевых взаимодействий (По Доменам):</b></p>
+      {% if i.domain_list %}
+      {% for ipss in i.domain_list %}
+      <p class="command">Адрес: {{ipss['Address']}} -- Время создания: {{ipss['Created']}} -- Домен: {{ipss['Domain']}}</p>
+      {% endfor %}
+      {% endif %}
+      <p class="command"><b>Cетевые соединения:</b></p>
+      {% if i.net_list %}
+      {% for ips in i.net_list %}
+      <p class="command">{{ips['LocalAddr']}}:{{ips['LocalPort']}} -> {{ips['ForeignAddr']}}:{{ips['ForeignPort']}} </p>
+      {% endfor %}
+      {% endif %}
+      <p class="command"><b>Найденные файлы на диске:</b></p>
+      {% if i.files_on_images %}
+      {% for files in i.files_on_images %}
+      <p class="command">Файл: {{files['Full Path']}} -- Время: {{files['Time']}} -- Действие: {{files['action']}}</p>
+      {% endfor %}
+      {% endif %}
+      <p class="command"><b>Возможные иньекции кода:</b></p>
+      <p class="command">{{i.malfind_date}}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<p class="command"><b>Пожалуйста выберите подтвержденные процессы:</b></p>
+<form id="survey-form" action="" method="post"> 
+    {% for i in list_proc %}
+    {% set list1 = i.name %}
+    {% if i.pid!='UserAssistPotentialProc' %}
+    <div id="form-group"> 
+      <label for="{{list1[0]}}" id="{{list1[0]}}-label">{{list1}}: </label> 
+      <input type="checkbox" id="{{list1[0]}}" name="proc" value="{{i.pid}}">
+    </div>
+    {% endif %}
+    {% endfor %}
+    <input type = "submit" value="Подтвердить процессы и выгрузить в базу"/>
+ </form>
+<!-- {% for i in list_proc %}
+<p>{{i.name}}</p>
+{% for ii in i.dlls %}
+<p>{{ii}}</p>
+{% endfor %}
+
+{% endfor %} -->
+{% endif %}
+
+{% endblock %}

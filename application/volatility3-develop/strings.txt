@@ -1,0 +1,333 @@
+!This program cannot be run in DOS mode.
+F*HY
+.text
+`.rsrc
+@.reloc
+po 
+po!
+po 
+po 
+po 
+po 
+po!
+ps.
+p(0
+po 
+po 
+po 
+po 
+po 
+pr1
+po7
++(=
+po 
+po 
+po 
+po 
+poQ
+poR
+p(#
+p(#
+po!
+ps`
++r&
+pod
+lSystem.Resources.ResourceReader, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089#System.Resources.RuntimeResourceSet
+PADPADP
+BSJB
+v2.0.50727
+#Strings
+#US
+#GUID
+#Blob
+<Module>
+Lavasoft.WCAssistant.WinService.exe
+ProjectInstaller
+SPWindowsService
+WCAssistantService
+Lavasoft.SearchProtect.WinService
+Program
+System.Configuration.Install
+Installer
+System.ServiceProcess
+ServiceBase
+mscorlib
+System
+Object
+.ctor
+System.ComponentModel
+IContainer
+components
+Dispose
+InitializeComponent
+ServiceProcessInstaller
+serviceProcessInstaller1
+ServiceInstaller
+serviceInstaller1
+System.ServiceModel
+ServiceHost
+myHost
+log4net
+ILog
+logger
+.cctor
+OnStart
+TryRemoveOldKomodia
+TryRemoveRootCert
+OnStop
+AddUrlAcl
+SetTrustedSites
+GetUserSID
+GetUsername
+Main
+disposing
+args
+System.Reflection
+AssemblyTitleAttribute
+AssemblyDescriptionAttribute
+AssemblyConfigurationAttribute
+AssemblyCompanyAttribute
+AssemblyProductAttribute
+AssemblyCopyrightAttribute
+AssemblyTrademarkAttribute
+AssemblyCultureAttribute
+System.Runtime.InteropServices
+ComVisibleAttribute
+GuidAttribute
+AssemblyVersionAttribute
+AssemblyFileVersionAttribute
+System.Diagnostics
+DebuggableAttribute
+DebuggingModes
+System.Runtime.CompilerServices
+CompilationRelaxationsAttribute
+RuntimeCompatibilityAttribute
+Lavasoft.WCAssistant.WinService
+RunInstallerAttribute
+IDisposable
+Component
+ServiceAccount
+set_Account
+set_Password
+set_Username
+set_Description
+set_DisplayName
+set_ServiceName
+ServiceStartMode
+set_StartType
+InstallerCollection
+get_Installers
+AddRange
+Debug
+Info
+Exception
+get_Message
+String
+Concat
+Error
+Lavasoft.WCAssistant.Service.Logger
+Lavasoft.SearchProtect.Service.Logger
+Logger
+Setup
+Type
+RuntimeTypeHandle
+GetTypeFromHandle
+LogManager
+GetLogger
+<OnStart>b__0
+CompilerGeneratedAttribute
+System.Threading
+ThreadStart
+Thread
+Start
+System.ServiceModel.Channels
+CommunicationObject
+Close
+Lavasoft.WCAssistant.WcfService
+Lavasoft.SearchProtect.WcfService
+Uri
+ToString
+WSHttpBinding
+IWCAssistantService
+System.ServiceModel.Description
+ServiceEndpoint
+Binding
+AddServiceEndpoint
+Open
+<TryRemoveOldKomodia>b__2
+System.Core
+Func`2
+CS$<>9__CachedAnonymousMethodDelegate3
+Assembly
+GetExecutingAssembly
+get_Location
+System.IO
+Path
+GetDirectoryName
+Replace
+Directory
+GetDirectories
+System.Linq
+Enumerable
+IOrderedEnumerable`1
+System.Collections.Generic
+IEnumerable`1
+OrderByDescending
+Count
+ElementAt
+Combine
+Delete
+System.Security.Cryptography.X509Certificates
+X509Store
+StoreName
+StoreLocation
+OpenFlags
+X509Certificate2Collection
+get_Certificates
+X509FindType
+Find
+System.Collections
+CollectionBase
+get_Count
+Int32
+X509Certificate2Enumerator
+GetEnumerator
+X509Certificate2
+get_Current
+X500DistinguishedName
+get_IssuerName
+get_Name
+X509Certificate
+Remove
+get_HelpLink
+MoveNext
+System.Security.Cryptography
+CryptographicException
+Process
+ProcessStartInfo
+ProcessWindowStyle
+set_WindowStyle
+set_FileName
+set_Arguments
+set_StartInfo
+Microsoft.Win32
+Registry
+RegistryValueKind
+SetValue
+Empty
+IsNullOrEmpty
+System.Security.Principal
+NTAccount
+SecurityIdentifier
+IdentityReference
+Translate
+get_Value
+Warn
+WindowsIdentity
+GetCurrent
+get_User
+System.Management
+ManagementObjectSearcher
+ManagementObjectCollection
+Get
+IEnumerable
+Cast
+ManagementBaseObject
+First
+get_Item
+Container
+Run
+SPWindowsService.ProjectInstaller.resources
+Ad-Aware Web Companion Internet security service
+WC Assistant
+WCAssistantService
+  Windows service installing..
+Windows service initialized
+Exception during installing service. Error: 
+  Windows service installing finished
+  OnStart() Started
+ServiceHost != null
+ServiceHost is Closed
+ServiceHost is initialized
+http://localhost:8733/SPServiceLibrary
+Uri: 
+ is valid
+WSHttpBinding is initialized
+Contact is initialized
+Endpoint has added
+ServiceHost is opened
+Exception during starting service. Error: 
+  OnStart() Finished
+Application
+TcpService
+TryRemoveOldKomodia 
+Deleting 
+TryRemoveOldKomodia exception 
+Lavasoft Limited
+Searching for Root Cert: 
+Removing Root Cert: 
+Exception removing Root Cert: 
+Exception details: 
+  OnStop() Started
+Exception during stoping service. Error: 
+  OnStop() Finished
+cmd.exe
+/C netsh http add urlacl url=http://+:9007/ user=Everyone
+HKEY_USERS\
+Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\
+localhost
+webcompanion.com
+http
+Failure to getusername: username is 
+Trying another way to get userID...
+UserId...
+UserName...
+GetUserSID Error with username "
+": 
+SELECT UserName FROM Win32_ComputerSystem
+UserName
+z\V
+SPWindowsService
+Copyright 
+  2014
+$a091888b-ce1e-47b2-ae28-1ce27c9f69b3
+1.0.0.0
+WrapNonExceptionThrows
+F*HY
+RSDS_
+c:\Users\vishal.dhaduk\Documents\Source\tfs\WC\DEV-WC\Common\SearchProtect.WinService\obj\Debug\Lavasoft.WCAssistant.WinService.pdb
+_CorExeMain
+mscoree.dll
+VS_VERSION_INFO
+VarFileInfo
+Translation
+StringFileInfo
+000004b0
+FileDescription
+SPWindowsService
+FileVersion
+1.0.0.0
+InternalName
+Lavasoft.WCAssistant.WinService.exe
+LegalCopyright
+Copyright 
+  2014
+OriginalFilename
+Lavasoft.WCAssistant.WinService.exe
+ProductName
+SPWindowsService
+ProductVersion
+1.0.0.0
+Assembly Version
+1.0.0.0
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+  <assemblyIdentity version="1.0.0.0" name="MyApplication.app"/>
+  <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
+    <security>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <requestedExecutionLevel level="asInvoker" uiAccess="false"/>
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+</assembly>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<table>
+    <h1>Найденые уязвимости</h1>
+        <p> </p>
+        <thead>
+            <tr>
+            <th><b>ID в Базе:</b></th>
+            <th><b>Имя процесса:</b></th>
+            <th><b>Факт взаимодействия с файлами</b></th>
+            <th><b>Скрытый</b></th>
+            <th><b>Загруженный DLL</b></th>
+            <th><b>Аргументы командной строки</b></th>
+            <th><b>Возможные иньекции кода</b></th>
+            <th><b>Сетевые соединения</b></th>
+            <th><b>Найденный файлы</b></th>
+            <th><b>Найденный домены</b></th>
+        </tr>
+        </thead>
+        <tbody>
+    {% for dict in proc_dict %}
+     <tr>
+            <td>{{dict['_id']|string()}}</th>
+            <td>{{dict['name']}}</th>
+            <td>{{dict['file_action']}}</th>
+            <td>{{dict['hide']}}</th>       
+            <td>{{dict['dlls']}}</td>
+            <td>{{dict['cmd_line']}}</td>
+            <td>{{dict['malfind']}}</td>
+            <td>{{dict['connections']}}</td>
+            <td>{{dict['files']}}</td>
+            <td>{{dict['domains']}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    {% endblock %}  
